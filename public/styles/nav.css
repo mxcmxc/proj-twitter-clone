@@ -1,0 +1,45 @@
+
+#nav-bar {
+  position: fixed;
+  height: 80px;
+  width: 100%; /*full width of viewport*/
+  background-color: #00a087;
+  color: #e8fdff;
+  padding: 0 2em; /*left/right inner content not touch viewport edges*/
+  top: 0; /*fixed to top*/
+  z-index: 5;
+}
+
+#nav-bar .logo {
+  width: 80px;
+  height: 80px;
+  float: left;
+}
+
+#nav-bar .header {
+  font-size: 2em; /*2x regular font size*/
+  line-height: 80px;  /* centered vertically since #nav-bar is 80px*/
+  float: left;
+  padding-left: 10px; /*logo and heading 10px btw each other*/
+}
+
+#compose-btn {
+  float: right;
+  border-radius: 6px;
+  background-color: ##e8fffb;
+  color: #00a087;
+  padding: 15px;
+  font-size: 120%;
+  border: 1px solid black;
+  margin: 15px auto;
+}
+
+#compose-btn:hover {
+  float: right;
+  border-radius: 6px;
+  background-color: white;
+  color: black;
+  cursor: pointer;
+  padding: 15px;
+  mmargin: 15px auto;
+  font-size: 120%;
