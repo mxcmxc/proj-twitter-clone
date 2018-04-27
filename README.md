@@ -14,8 +14,8 @@ This repository is the starter code for the project: Students will fork and clon
 
 ## Screenshots
 
-!["Screenshot of compose tweet"](URL)
-!["Screenshot of posted tweets"](URL)
+!["Screenshot of compose tweet"](https://github.com/mxcmxc/tweeter/blob/master/docs/compose-tweet.png)
+!["Screenshot of posted tweets"](https://github.com/mxcmxc/tweeter/blob/master/docs/posted-tweets.png)
 
 ## Dependencies
 
