@@ -1,5 +1,7 @@
 "use strict";
 
+//*** when given the tweet data helpers, configures and returns an express.Router() describing the routes for a simple "tweets" JSON API ***//
+
 const userHelper    = require("../lib/util/user-helper")
 
 const express       = require('express');
@@ -7,6 +9,7 @@ const tweetsRoutes  = express.Router();
 
 module.exports = function(DataHelpers) {
 
+  //GET route to retreive tweets
   tweetsRoutes.get("/", function(req, res) {
     DataHelpers.getTweets((err, tweets) => {
       if (err) {
@@ -17,6 +20,7 @@ module.exports = function(DataHelpers) {
     });
   });
 
+  // POST route to create a new tweet
   tweetsRoutes.post("/", function(req, res) {
     if (!req.body.text) {
       res.status(400).json({ error: 'invalid request: no data in POST body'});

@@ -33,12 +33,13 @@ function createTweetElement(tweetData) {
     .text(tweetData.content.text);
 
   //create posted tweet footer
-  let $footer = $('<footer>');
+  let $footer = $('<footer>')
   // post timestamp
   $('<span>')
     .addClass('timestamp')
     .text(postTime(tweetData.created_at))
     .appendTo($footer);
+    console.log(tweetData.created_at);
   // button area
   let $buttonIconsArea = $('<div>')
     .addClass('button-icons-area')
@@ -64,7 +65,6 @@ function createTweetElement(tweetData) {
 
   return ($tweet);
 }
-
 
 function renderTweets(data) {
   $('#tweets-container').empty();
@@ -96,7 +96,7 @@ function postTweet() {
   $.ajax({
     url: '/tweets/',
     method: 'POST',
-    data: $(".composer-form-textarea").serialize() //turns the form data into a query string. This serialized data will be sent to the server in the POST request body
+    data: $(".composer-form-textarea").serialize() //turns the form data into a query string. This serialized data will be sent to the server in the POST request body. outputs "text=hi"
   })
   .done(function() {
     loadTweets();
@@ -113,13 +113,13 @@ function postTweet() {
   // check data is not empty or null
   if($(".composer-form-textarea").val() === "" || ($("composer-form-textarea") === null)) {
     alert('Tweet cannot be empty.');
-    //MISSING need to reset alert for new tweet container
-    $('.counter').text('140');
+    return false;
   //check data is not over limit
   } else if ($(".composer-form-textarea").val().length > 140) {
     alert('Tweet cannot be more than 140 characters');
-    //MISSING need to reset new tweet counter!
+    return false;
   }
+  return true;
  }
 
 //=============Bind Compose Button To Toggle New Tweet Form==========//
@@ -133,6 +133,14 @@ function composeButtonToggle() {
   });
 }
 
+//=============Clear Compose Tweet Textarea=============//
+function clearComposer() {
+  // clear textarea
+  $("#composer-form")[0].reset(); //a nodeList is returns so must use[0] to specify the index of nodeList
+  // reset character counter
+  $counter.text(140);
+}
+
 //=============Execute Document=============//
 
 $(document).ready(() => {
@@ -140,8 +148,9 @@ $(document).ready(() => {
   composeButtonToggle();
   $("#composer-form").on("submit", function(event) {
     event.preventDefault();
-    validateTweet();
-    postTweet();
+    if (validateTweet()) {
+      postTweet();
+      clearComposer();
+    }
   });
 });
-
