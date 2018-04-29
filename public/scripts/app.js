@@ -39,7 +39,6 @@ function createTweetElement(tweetData) {
     .addClass('timestamp')
     .text(postTime(tweetData.created_at))
     .appendTo($footer);
-    console.log(tweetData.created_at);
   // button area
   let $buttonIconsArea = $('<div>')
     .addClass('button-icons-area')
