@@ -133,6 +133,7 @@ function composeButtonToggle() {
 }
 
 //=============Clear Compose Tweet Textarea=============//
+//Clears textarea and specifies the index of the nodelist. Also resets the character counter back to 140
 function clearComposer() {
   // clear textarea
   $("#composer-form")[0].reset(); //a nodeList is returns so must use[0] to specify the index of nodeList
